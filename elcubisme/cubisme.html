@@ -4,6 +4,16 @@
     <meta charset="utf-8">
     <title>Cubisme A-Frame</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+     <script>
+    AFRAME.registerComponent("mylink", {
+      init: function () {
+        this.el.addEventListener("click", (e) => {
+          window.location = this.data.href;
+        })
+      }
+    })
+  </script>
+
   </head>
 
   <body>
@@ -58,14 +68,16 @@
         position="6 2 -6"
         rotation="0 30 0"
         radius="2"
-        src="#bicicletes">
+        src="#bicicletes"
+        mylink="https://ivanculla.github.io/web3d/ex6/assets/ex6.html">
       </a-dodecahedron>
 
     </a-scene>
 
     <script>
-      let figura1 = document.querySelector("#esmou");
+      const linkCubisme = "https://ivanculla.github.io/web3d/elcubisme/cubisme.html";
 
+      let figura1 = document.querySelector("#esmou");
       figura1.addEventListener("click", () => {
         figura1.setAttribute("animation__float", {
           property: "position",
@@ -82,10 +94,11 @@
           dur: 1200,
           loop: true
         });
+
+        window.location.href = linkCubisme;
       });
 
       let cub = document.querySelector("#cub");
-
       cub.addEventListener("click", () => {
         cub.setAttribute("animation__jump", {
           property: "position",
@@ -103,10 +116,11 @@
           dir: "alternate",
           loop: true
         });
+
+        window.location.href = linkCubisme;
       });
 
       let guernica = document.querySelector("#guernicaObj");
-
       guernica.addEventListener("click", () => {
         guernica.setAttribute("animation__move", {
           property: "position",
@@ -124,6 +138,8 @@
           dir: "alternate",
           loop: true
         });
+
+        window.location.href = linkCubisme;
       });
     </script>
 
