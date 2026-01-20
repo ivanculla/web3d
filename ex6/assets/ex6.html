@@ -1,0 +1,88 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script>
+    AFRAME.registerComponent("mylink", {
+      init: function () {
+        this.el.addEventListener("click", (e) => {
+          window.location = this.data.href;
+        })
+      }
+    })
+  </script>
+
+
+</head>
+
+<body>
+  <a-scene cursor="rayOrigin: mouse">
+    <a-assets>
+      <img id="imgSortida" src="entragroc.png">
+      <img id="imgCasa" src="casadelsusto.jpg">
+      <a-asset-item id="dracula" src="batCat_Creature.glb"></a-asset-item>
+      <a-asset-item id="ratpanat" src="ratpanat.glb"></a-asset-item>
+
+
+    </a-assets>
+
+    <a-entity camera look-controls wasd-controls="false">
+      <a-entity cursor="fuse: true; fuseTimeout: 2000" position="0 0 -1"
+        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: red; shader: flat" animation="property: components.material.material.color;
+                 type: color;
+                 to: white;
+                 dur: 1000;
+                 dir: alternate;
+                 loop: true">
+      </a-entity>
+    </a-entity>
+
+
+
+
+    <a-sky src="#imgCasa"></a-sky>
+
+
+    <a-entity
+    gltf-model="#dracula"
+    position="-447 0 93"
+    scale="7 7 7"
+    rotation="0 99 0"
+    mylink="href:https://ivanculla.github.io/web3d/ex1/ex1.html"
+    animation="property: position;
+               dur: 10000;
+               from: -447 -10 93;
+               to: 0 -10 0;
+               dir: alternate;
+               loop: true">
+</a-entity>
+
+
+<a-entity
+    gltf-model="ratpanat.glb"
+    position="394.8369 20.5251 -211.80795"
+    scale="103.46712 105.74955 57.66856"
+    rotation="-4.87 -151.50 -7"
+    animation="property: position;
+               from: 380 20 -230;
+               to: 360 24 -170;
+               dur: 7000;
+               easing: easeInOutSine;
+               dir: alternate;
+               loop: true"
+    animation__rot="property: rotation;
+                    from: -4.87 -170 -7;
+                    to: -4.87 -130 -7;
+                    dur: 6000;
+                    dir: alternate;
+                    loop: true">
+</a-entity>
+
+
+    </a-entity>
+    <a-plane position="14 0 -3" src="#imgSortida" rotation="0 -99 0" transparent="true"
+      mylink="href: https://ivanculla.github.io/web3d/;"></a-plane>
+  </a-scene>
+</body>
+
+</html>
